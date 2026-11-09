@@ -1,0 +1,7 @@
+*.zip
+.DS_Store
+Thumbs.db
+.env
+.env.*
+vendor/
+node_modules/

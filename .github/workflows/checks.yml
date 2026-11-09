@@ -1,0 +1,20 @@
+name: Checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: php -n -l webinew-related-products.php
+      - run: php -n -l matcher.php
+      - run: php -n tests/test.php
+      - run: node --check assets/slider.js
+      - run: node tests/test-slider.cjs
